@@ -326,7 +326,7 @@ def get_yield_recommendations(crop, area, season, pH, rainfall, temperature, pro
 
     return recs
 
-def get_detailed_crop_plan(crop, state, season, area, pH, rainfall, temperature):
+def get_detailed_crop_plan(crop, state, season):
     """Generate detailed crop management plan for specific crop-state-season combination"""
     
     # Check if this is our detailed plan case for West Bengal
@@ -350,10 +350,10 @@ def get_detailed_crop_plan(crop, state, season, area, pH, rainfall, temperature)
                 "days": _("15 days before sowing"),
                 "activities": [
                     _("Land preparation: Deep ploughing 2-3 times when soil moisture is 18-20%"),
-                    _("Apply 2-3 tons of well-decomposed FYM or compost per hectare"),
+                    _("Apply 2-3 tons of well-decomposed farmyard manure or compost per hectare"),
                     _("Level the field properly for uniform water distribution"),
                     _("Prepare nursery beds (400 sq.m for 1 hectare)"),
-                    _("Treat seeds with Carbendazim @ 2g/kg seeds")
+                    _("Treat seeds with Carbendazim @2g/kg seeds")
                 ],
                 "irrigation": _("Pre-sowing irrigation: 8-10 cm water depth"),
                 "fertilizer": _("Basal application: 60 kg N + 30 kg P2O5 + 30 kg K2O per hectare")
@@ -366,9 +366,9 @@ def get_detailed_crop_plan(crop, state, season, area, pH, rainfall, temperature)
                 "phase": _("Nursery Phase"),
                 "days": _("Days 1-25"),
                 "activities": [
-                    _("Sow pre-treated seeds @ 40-50 kg/hectare in nursery"),
+                    _("Sow pre-treated seeds @40-50 kg/hectare in nursery"),
                     _("Maintain 2-3 cm water level in nursery beds"),
-                    _("Apply urea @ 10 kg/400 sq.m nursery on day 10"),
+                    _("Apply urea @10 kg/400 sq.m nursery on day 10"),
                     _("Monitor for blast disease and apply Tricyclazole if needed")
                 ],
                 "irrigation": _("Daily light irrigation - 2-3 cm water depth"),
@@ -385,7 +385,7 @@ def get_detailed_crop_plan(crop, state, season, area, pH, rainfall, temperature)
                     _("Transplant 25-30 day old seedlings"),
                     _("Spacing: 20cm x 15cm (2-3 seedlings per hill)"),
                     _("Complete transplanting within 5 days"),
-                    _("Apply 2,4-D @ 1kg/hectare on day 3 after transplanting for weed control")
+                    _("Apply 2,4-D @1kg/hectare on day 3 after transplanting for weed control")
                 ],
                 "irrigation": _("Maintain 3-5 cm standing water throughout transplanting"),
                 "fertilizer": _("No fertilizer application during transplanting")
@@ -497,10 +497,10 @@ def get_detailed_crop_plan(crop, state, season, area, pH, rainfall, temperature)
                 "days": _("20 days before monsoon (May 15 - June 5)"),
                 "activities": [
                     _("Summer ploughing 2-3 times for pest control and soil health"),
-                    _("Apply 3-4 tons of well-decomposed FYM or compost per hectare"),
+                    _("Apply 3-4 tons of well-decomposed farmyard manure or compost per hectare"),
                     _("Construct/repair field bunds for water conservation"),
                     _("Prepare community nursery beds on higher ground"),
-                    _("Seed treatment with Pseudomonas @ 10g/kg for disease resistance"),
+                    _("Seed treatment with Pseudomonas @10g/kg for disease resistance"),
                     _("Check drainage channels for cyclone preparedness")
                 ],
                 "irrigation": _("Depends on pre-monsoon showers, light irrigation if needed"),
@@ -514,11 +514,11 @@ def get_detailed_crop_plan(crop, state, season, area, pH, rainfall, temperature)
                 "phase": _("Monsoon Nursery Phase"),
                 "days": _("Days 1-30 (June 5 - July 5)"),
                 "activities": [
-                    _("Sow seeds @ 60-80 kg/hectare in nursery (higher density for cyclone backup)"),
+                    _("Sow seeds @60-80 kg/hectare in nursery (higher density for cyclone backup)"),
                     _("Maintain 2-5 cm water level depending on rainfall"),
-                    _("Apply neem cake @ 250 kg/hectare for pest management"),
+                    _("Apply neem cake @250 kg/hectare for pest management"),
                     _("Monitor weather forecast for cyclone warnings"),
-                    _("Apply urea @ 15 kg/400 sq.m nursery on day 15")
+                    _("Apply urea @15 kg/400 sq.m nursery on day 15")
                 ],
                 "irrigation": _("Rainwater dependent - supplement only if rainfall <50mm/week"),
                 "fertilizer": _("Day 15: Urea 15 kg per 400 sq.m nursery area\nDay 25: MOP 5 kg per 400 sq.m for strengthening")
@@ -535,7 +535,7 @@ def get_detailed_crop_plan(crop, state, season, area, pH, rainfall, temperature)
                     _("Wider spacing: 25cm x 20cm for better wind resistance"),
                     _("Plant 3-4 seedlings per hill for cyclone tolerance"),
                     _("Complete transplanting before peak monsoon intensity"),
-                    _("Apply Butachlor @ 1.25 kg/hectare for weed control on day 3")
+                    _("Apply Butachlor @1.25 kg/hectare for weed control on day 3")
                 ],
                 "irrigation": _("Maintain 5-8 cm standing water, monitor for excess water drainage"),
                 "fertilizer": _("No fertilizer during transplanting - focus on establishment")
@@ -553,7 +553,7 @@ def get_detailed_crop_plan(crop, state, season, area, pH, rainfall, temperature)
                     _("Monitor for blast and sheath blight (high humidity diseases)"),
                     _("Apply Triazophos for stem borer control if needed"),
                     _("Check field drainage after heavy rainfall events"),
-                    _("Foliar spray of potash @ 1% for strength on day 70")
+                    _("Foliar spray of potash @1% for strength on day 70")
                 ],
                 "irrigation": _("Days 40-60: 8-12 cm water depth (monsoon peak)\nDays 61-80: 5-8 cm water depth\nEnsure proper drainage during heavy rains"),
                 "fertilizer": _("Day 45: Apply 40 kg N (87 kg Urea) per hectare\nDay 65: Apply remaining 40 kg N (87 kg Urea) per hectare\nDay 70: Foliar KCl spray 1%")
@@ -634,11 +634,11 @@ def get_detailed_crop_plan(crop, state, season, area, pH, rainfall, temperature)
                 _("Community nursery approach for risk reduction")
             ],
             "odisha_specific": [
-                _("🌀 Cyclone preparedness: Monitor IMD warnings regularly"),
-                _("🌊 Drainage: Essential for managing monsoon excess water"),
-                _("🌾 Varieties: Use Lalat/Pooja for local adaptation"),
-                _("🏪 Storage: Cyclone-safe storage facilities needed"),
-                _("👥 Community approach: Share resources for risk management")
+                _("Cyclone preparedness: Monitor IMD warnings regularly"),
+                _("Drainage: Essential for managing monsoon excess water"),
+                _("Varieties: Use Lalat/Pooja for local adaptation"),
+                _("Storage: Cyclone-safe storage facilities needed"),
+                _("Community approach: Share resources for risk management")
             ]
         }
         
@@ -648,12 +648,11 @@ def get_detailed_crop_plan(crop, state, season, area, pH, rainfall, temperature)
         # Return general recommendations for other combinations
         return None
 
-def display_detailed_crop_plan(crop, state, season, area, pH, rainfall, temperature):
+def display_detailed_crop_plan(crop, state, season):
     """Display detailed crop management plan"""
-    plan = get_detailed_crop_plan(crop, state, season, area, pH, rainfall, temperature)
+    plan = get_detailed_crop_plan(crop, state, season)
     
     if plan:
-        st.success(_("🌾 Detailed Crop Management Plan Available!"))
         
         # Display header info
         col1, col2, col3, col4 = st.columns(4)
@@ -666,11 +665,18 @@ def display_detailed_crop_plan(crop, state, season, area, pH, rainfall, temperat
         with col4:
             st.metric(_("Duration"), _(plan["duration"]))
         
-        st.info(_(f"**Recommended Variety:** {plan['variety_recommended']}"))
+        st.info(_(f"**Recommended Seed Varieties:** {plan['variety_recommended']}"))
         
         # Special Odisha-specific alerts
         if plan["state"].lower() == "odisha":
-            st.warning(_("⚠️ **Cyclone Zone Alert**: This plan includes cyclone preparedness measures specific to Odisha's coastal conditions."))
+            st.markdown(f"""
+            <div style="background-color:#aee1c4; border-left:6px solid #f44336; padding:16px; border-radius:8px; margin-bottom:16px;">
+                <span style="font-size:18px; margin-right:8px;">⚠️</span>
+                <span style="font-size:16px; color:#bc102a; font-weight:bold;">{_("Cyclone Zone Alert")}</span>
+                <br>
+                <span style="font-size:14px; color:#bc102a; margin-top:4px; display:block;">{_("This plan includes cyclone preparedness measures specific to Odisha's coastal conditions.")}</span>
+            </div>
+            """, unsafe_allow_html=True)
             
             with st.expander(_("🌀 Odisha-Specific Considerations"), expanded=True):
                 for consideration in plan["summary"]["odisha_specific"]:
@@ -691,10 +697,18 @@ def display_detailed_crop_plan(crop, state, season, area, pH, rainfall, temperat
                 
                 with col2:
                     st.markdown(_("**💧 Irrigation:**"))
-                    st.info(phase["irrigation"])
+                    st.markdown(f"""
+                    <div style="background-color:#98e7d4; border-left:4px solid #2196f3; padding:12px; border-radius:6px; margin-bottom:8px;">
+                        <span style="color:#0d47a1; font-size:14px; line-height:1.6;">{phase["irrigation"].replace(chr(10), '<br>')}</span>
+                    </div>
+                    """, unsafe_allow_html=True)
                     
                     st.markdown(_("**🌱 Fertilizer:**"))
-                    st.success(phase["fertilizer"])
+                    st.markdown(f"""
+                    <div style="background-color:#98eec6; border-left:4px solid #4caf50; padding:12px; border-radius:6px; margin-bottom:8px;">
+                        <span style="color:#2e7d32; font-size:14px; line-height:1.6;">{phase["fertilizer"].replace(chr(10), '<br>')}</span>
+                    </div>
+                    """, unsafe_allow_html=True)
         
         # Display summary
         st.markdown(_("## 📊 Summary & Key Information"))
@@ -716,8 +730,12 @@ def display_detailed_crop_plan(crop, state, season, area, pH, rainfall, temperat
         with col2:
             st.markdown(_("**⚠️ Critical Stages:**"))
             for stage in plan["summary"]["critical_stages"]:
-                st.warning(stage)
-            
+                st.markdown(f"""
+                <div style="background-color:#aee1c4; border-left:6px solid #ff6b6b; padding:12px; border-radius:6px; margin-bottom:8px;">
+                    <span style="font-size:16px; margin-right:6px;"></span>
+                    <span style="font-size:14px; color:#bc102a; font-weight:500;">{stage}</span>
+                </div>
+                """, unsafe_allow_html=True)
 
         return True
     
@@ -763,7 +781,7 @@ st.markdown(
 
 with st.sidebar:
     # Store original options in English
-    original_options = ["Home", "Crop Yield Prediction", "Crop Recommendation", "Meet the Creators"]
+    original_options = ["Home", "Crop Yield Prediction", "Crop Recommendation", "Cultivation Guide", "Meet the Creators"]
     
     # Translate options for display
     translated_options = [_(option) for option in original_options]
@@ -771,7 +789,7 @@ with st.sidebar:
     selected_translated = option_menu(_("Fasal Vikas"),
                            translated_options,
                            menu_icon=":seedling:",
-                           icons=["house", "tree", "tree", "people"],
+                           icons=["house", "tree", "tree", "book", "people"],
                            default_index=0)
     
     # Get the original English option for comparison
@@ -804,14 +822,14 @@ if selected == "Crop Recommendation":
     humidity = st.number_input(_("Humidity (%)"), min_value=0.0, max_value=100.0, value=0.0)
     rainfall = st.number_input(_("Rainfall (mm)"), min_value=0.0, value=0.0)
     
-    if st.button(_("Recommend Crop")):
-        crop_input = np.array([[N, P, K, pH, temperature, humidity, rainfall]])
+    # if st.button(_("Recommend Crop")):
+    #     crop_input = np.array([[N, P, K, pH, temperature, humidity, rainfall]])
         
-        if all(crop_input[0][:3]):  # Check if N, P, K values are provided
-            crop_recommendation = crop_recom_model.predict(crop_input)
-            st.success(_(f"Recommended Crop: {crop_recommendation[0]}"))
-        else:
-            st.error(_("Please enter values for Nitrogen (N), Phosphorus (P), and Potassium (K)"))
+    #     if all(crop_input[0][:3]):  # Check if N, P, K values are provided
+    #         crop_recommendation = crop_recom_model.predict(crop_input)
+    #         st.success(_(f"Recommended Crop: {crop_recommendation[0]}"))
+    #     else:
+    #         st.error(_("Please enter values for Nitrogen (N), Phosphorus (P), and Potassium (K)"))
 
 # Crop Yield Prediction
 elif selected == "Crop Yield Prediction":
@@ -857,15 +875,19 @@ Leverage machine learning for accurate crop yield predictions to enhance product
     translated_crops = get_translated_options(crops, current_lang)
     translated_seasons = get_translated_options(seasons, current_lang)
 
-    # Display translated options but get original values
-    state_translated = st.selectbox(_("Select State"), translated_states)
-    crop_translated = st.selectbox(_("Select Crop"), translated_crops)
-    season_translated = st.selectbox(_("Select Season"), translated_seasons)
+    # Add blank option and display translated options but get original values
+    state_options = [_("-- Select State --")] + translated_states
+    crop_options = [_("-- Select Crop --")] + translated_crops  
+    season_options = [_("-- Select Season --")] + translated_seasons
+
+    state_translated = st.selectbox(_("Select State"), state_options, index=0)
+    crop_translated = st.selectbox(_("Select Crop"), crop_options, index=0)
+    season_translated = st.selectbox(_("Select Season"), season_options, index=0)
         
-    # Get original English values for processing
-    state = get_original_value(state_translated, states, translated_states)
-    crop = get_original_value(crop_translated, crops, translated_crops)
-    season = get_original_value(season_translated, seasons, translated_seasons)
+    # Get original English values for processing (handle blank selections)
+    state = None if state_translated == _("-- Select State --") else get_original_value(state_translated, states, translated_states)
+    crop = None if crop_translated == _("-- Select Crop --") else get_original_value(crop_translated, crops, translated_crops)
+    season = None if season_translated == _("-- Select Season --") else get_original_value(season_translated, seasons, translated_seasons)
 
     pH = st.number_input(_("Soil pH Value"), min_value=0.0, max_value=14.0, value=0.0)
     rainfall = st.number_input(_("Rainfall (mm)"), min_value=0.0, value=0.0)
@@ -874,7 +896,7 @@ Leverage machine learning for accurate crop yield predictions to enhance product
     production = st.number_input(_("Production (tons)"), min_value=0.0, value=0.0)
 
     # Single button that handles both prediction and detailed plan
-    if st.button(_("Predict Yield"), type="primary"):
+    if st.button(_("Predict Yield")):
         if state and crop and season and pH and rainfall and temperature and area and production:
             state_lower = state.lower()
             crop_lower = crop.lower()
@@ -897,18 +919,97 @@ Leverage machine learning for accurate crop yield predictions to enhance product
                 # Show tailored recommendations to improve yield
                 recs = get_yield_recommendations(crop, area, season, pH, rainfall, temperature, production, predicted_yield[0])
                 st.markdown(_("#### Recommendations to Improve Yield"))
+
                 for r in recs:
-                    st.info(r)
-                
-                # INTEGRATED: Check if detailed plan is available and display it
-                detailed_plan = get_detailed_crop_plan(crop, state, season, area, pH, rainfall, temperature)
-                if detailed_plan:
-                    st.markdown("---")
-                    st.markdown(_("# 🌾 **BONUS: Comprehensive Crop Management Plan**"))
-                    st.markdown(_("Since you selected a special combination, here's your detailed farming plan:"))
-                    display_detailed_crop_plan(crop, state, season, area, pH, rainfall, temperature)
+                    # Use icons and color blocks for different types of tips
+                    if "warning" in r.lower() or "alert" in r.lower() or "acidic" in r.lower() or "alkaline" in r.lower():
+                        st.markdown(
+                            f"""
+                            <div style="background-color:#aee1c4; border-left:6px solid #f44336; padding:16px; border-radius:8px; margin-bottom:10px;">
+                                <span style="font-size:22px; margin-right:8px;">⚠️</span>
+                                <span style="font-size:16px; color:#bc102a;">{r}</span>
+                            </div>
+                            """, unsafe_allow_html=True
+                        )
+                    elif "best" in r.lower() or "recommended" in r.lower() or "key" in r.lower():
+                        st.markdown(
+                            f"""
+                            <div style="background-color:#98eec6; border-left:6px solid #198754; padding:16px; border-radius:8px; margin-bottom:10px;">
+                                <span style="font-size:22px; margin-right:8px;">🌱</span>
+                                <span style="font-size:16px; color:#2e7d32;">{r}</span>
+                            </div>
+                            """, unsafe_allow_html=True
+                        )
+                    else:
+                        st.markdown(
+                            f"""
+                            <div style="background-color:#98e7d4; border-left:6px solid #2196f3; padding:16px; border-radius:8px; margin-bottom:10px;">
+                                <span style="font-size:22px; margin-right:8px;">💡</span>
+                                <span style="font-size:16px; color:#0d47a1;">{r}</span>
+                            </div>
+                            """, unsafe_allow_html=True
+                        )
         else:
             st.error(_("Please enter all required values"))
+
+elif selected == "Cultivation Guide":
+    st.title(_("Cultivation Guide"))
+    st.markdown(translate_markdown("""
+    ### Using the Crop Yield Prediction Model
+
+    - **Select State**: Choose the state where the crop is being cultivated.
+    - **Select Crop**: Pick the specific crop for yield prediction.
+    - **Select Season**: Choose the appropriate growing season.
+    """))
+
+    states = ['Andaman and Nicobar Islands', 'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chandigarh', 'Chhattisgarh', 
+              'Dadra and Nagar Haveli', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 
+              'Jammu and Kashmir', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh', 'Maharashtra', 
+              'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Puducherry', 'Punjab', 
+              'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura', 'Uttar Pradesh', 
+              'Uttarakhand', 'West Bengal']
+
+    crops = ['Arecanut', 'Barley', 'Banana', 'Blackpepper', 'Brinjal', 'Cabbage', 'Cardamom', 'Cashewnuts', 'Cauliflower', 
+             'Coriander', 'Cotton', 'Garlic', 'Grapes', 'Horsegram', 'Jowar', 'Jute', 'Ladyfinger', 'Maize', 
+             'Mango', 'Moong', 'Onion', 'Orange', 'Papaya', 'Pineapple', 'Potato', 'Rapeseed', 'Ragi', 'Rice', 
+             'Sesamum', 'Soyabean', 'Sunflower', 'Sweetpotato', 'Tapioca', 'Tomato', 'Turmeric', 'Wheat']
+
+    seasons = ['Kharif', 'Rabi', 'Summer', 'Whole Year']
+
+
+    # Use cached translation for better performance
+    current_lang = st.session_state.language
+    translated_states = get_translated_options(states, current_lang)
+    translated_crops = get_translated_options(crops, current_lang)
+    translated_seasons = get_translated_options(seasons, current_lang)
+
+    # Add blank option and display translated options but get original values
+    state_options = [_("-- Select State --")] + translated_states
+    crop_options = [_("-- Select Crop --")] + translated_crops  
+    season_options = [_("-- Select Season --")] + translated_seasons
+
+    state_translated = st.selectbox(_("Select State"), state_options, index=0)
+    crop_translated = st.selectbox(_("Select Crop"), crop_options, index=0)
+    season_translated = st.selectbox(_("Select Season"), season_options, index=0)
+        
+    # Get original English values for processing (handle blank selections)
+    state = None if state_translated == _("-- Select State --") else get_original_value(state_translated, states, translated_states)
+    crop = None if crop_translated == _("-- Select Crop --") else get_original_value(crop_translated, crops, translated_crops)
+    season = None if season_translated == _("-- Select Season --") else get_original_value(season_translated, seasons, translated_seasons)
+
+
+    if st.button(_("Cultivation Guide")):
+        # Check if all selections are made
+        if not state or not crop or not season:
+            st.error(_("Please select State, Crop, and Season to view cultivation guide"))
+        else:
+            # INTEGRATED: Check if detailed plan is available and display it
+            detailed_plan = get_detailed_crop_plan(crop, state, season)
+            if detailed_plan:
+                st.markdown("---")
+                st.markdown(_("# 🌾**Comprehensive Crop Management Plan**"))
+                display_detailed_crop_plan(crop, state, season)
+
 
 # Meet Creators
 elif selected == "Meet the Creators":
@@ -978,5 +1079,5 @@ else:
     st.write(_("### Overview"))
     st.write(_("Fasal Vikas is an AI-powered platform designed to empower farmers with personalized crop recommendations and accurate yield predictions. By leveraging advanced machine learning models and real-time data, it helps optimize irrigation, fertilization, and pest management. The intuitive interface and actionable insights enable farmers to boost productivity, make informed decisions, and sustainably manage their agricultural practices."))
     st.write(_("### Find the Code at:"))
-    st.write(_("Link: "))
+    st.write(_("Link: https://github.com/saumyaagarg/Fasal-Vikas"))
     st.write(_("Made with 💖 by Saumyaa, Aaron, Yati, Ananya, Chirag, and Aanya"))
