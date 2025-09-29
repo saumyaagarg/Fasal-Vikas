@@ -326,6 +326,403 @@ def get_yield_recommendations(crop, area, season, pH, rainfall, temperature, pro
 
     return recs
 
+def get_detailed_crop_plan(crop, state, season, area, pH, rainfall, temperature):
+    """Generate detailed crop management plan for specific crop-state-season combination"""
+    
+    # Check if this is our detailed plan case for West Bengal
+    if (crop.lower() == "rice" and 
+        state.lower() == "west bengal" and 
+        season.lower() == "kharif"):
+        
+        plan = {
+            "crop": "Rice",
+            "state": "West Bengal", 
+            "season": "Kharif",
+            "duration": "120 days",
+            "variety_recommended": "IET 4786 (Bishnu) or Swarna Sub-1",
+            "detailed_plan": []
+        }
+        
+        # Pre-planting phase (Days -15 to 0)
+        plan["detailed_plan"].extend([
+            {
+                "phase": _("Pre-Planting Preparation"),
+                "days": _("15 days before sowing"),
+                "activities": [
+                    _("Land preparation: Deep ploughing 2-3 times when soil moisture is 18-20%"),
+                    _("Apply 2-3 tons of well-decomposed FYM or compost per hectare"),
+                    _("Level the field properly for uniform water distribution"),
+                    _("Prepare nursery beds (400 sq.m for 1 hectare)"),
+                    _("Treat seeds with Carbendazim @ 2g/kg seeds")
+                ],
+                "irrigation": _("Pre-sowing irrigation: 8-10 cm water depth"),
+                "fertilizer": _("Basal application: 60 kg N + 30 kg P2O5 + 30 kg K2O per hectare")
+            }
+        ])
+        
+        # Nursery phase (Days 1-25)
+        plan["detailed_plan"].extend([
+            {
+                "phase": _("Nursery Phase"),
+                "days": _("Days 1-25"),
+                "activities": [
+                    _("Sow pre-treated seeds @ 40-50 kg/hectare in nursery"),
+                    _("Maintain 2-3 cm water level in nursery beds"),
+                    _("Apply urea @ 10 kg/400 sq.m nursery on day 10"),
+                    _("Monitor for blast disease and apply Tricyclazole if needed")
+                ],
+                "irrigation": _("Daily light irrigation - 2-3 cm water depth"),
+                "fertilizer": _("Day 10: Urea 10 kg per 400 sq.m nursery area")
+            }
+        ])
+        
+        # Transplanting phase (Days 25-30)
+        plan["detailed_plan"].extend([
+            {
+                "phase": _("Transplanting"),
+                "days": _("Days 25-30"),
+                "activities": [
+                    _("Transplant 25-30 day old seedlings"),
+                    _("Spacing: 20cm x 15cm (2-3 seedlings per hill)"),
+                    _("Complete transplanting within 5 days"),
+                    _("Apply 2,4-D @ 1kg/hectare on day 3 after transplanting for weed control")
+                ],
+                "irrigation": _("Maintain 3-5 cm standing water throughout transplanting"),
+                "fertilizer": _("No fertilizer application during transplanting")
+            }
+        ])
+        
+        # Vegetative growth phase (Days 30-65)
+        plan["detailed_plan"].extend([
+            {
+                "phase": _("Vegetative Growth"),
+                "days": _("Days 30-65"),
+                "activities": [
+                    _("First weeding and top dressing on day 35"),
+                    _("Second weeding on day 50"),
+                    _("Monitor for stem borer and apply Cartap Hydrochloride if needed"),
+                    _("Check for bacterial leaf blight symptoms")
+                ],
+                "irrigation": _("Days 30-35: 5-7 cm water depth\nDays 36-50: 3-5 cm water depth\nDays 51-65: 5-8 cm water depth"),
+                "fertilizer": _("Day 35: Apply 30 kg N (65 kg Urea) per hectare\nDay 50: Apply remaining 30 kg N (65 kg Urea) per hectare")
+            }
+        ])
+        
+        # Reproductive phase (Days 65-95)
+        plan["detailed_plan"].extend([
+            {
+                "phase": _("Reproductive Phase (Panicle Initiation to Flowering)"),
+                "days": _("Days 65-95"),
+                "activities": [
+                    _("Critical water management - maintain continuous flooding"),
+                    _("Apply potash if deficiency symptoms appear"),
+                    _("Monitor for blast disease in panicles"),
+                    _("Check for brown plant hopper and apply Imidacloprid if needed")
+                ],
+                "irrigation": _("Days 65-80: 8-10 cm continuous flooding\nDays 81-95: 5-8 cm water depth (most critical period)"),
+                "fertilizer": _("Day 70: Apply 15 kg K2O (25 kg MOP) if soil test shows deficiency")
+            }
+        ])
+        
+        # Grain filling phase (Days 95-115)
+        plan["detailed_plan"].extend([
+            {
+                "phase": _("Grain Filling"),
+                "days": _("Days 95-115"),
+                "activities": [
+                    _("Continue monitoring water levels"),
+                    _("Watch for rice bug and apply Malathion if needed"),
+                    _("Prepare for harvest - arrange machinery/labor"),
+                    _("Check grain moisture content weekly")
+                ],
+                "irrigation": _("Days 95-105: 3-5 cm water depth\nDays 106-115: Gradually reduce to 1-2 cm\nStop irrigation 7 days before harvest"),
+                "fertilizer": _("No fertilizer application during grain filling")
+            }
+        ])
+        
+        # Harvest phase (Days 115-120)
+        plan["detailed_plan"].extend([
+            {
+                "phase": _("Harvest"),
+                "days": _("Days 115-120"),
+                "activities": [
+                    _("Harvest when 85% grains turn golden yellow"),
+                    _("Moisture content should be 20-22% for safe storage"),
+                    _("Use combine harvester or manual harvesting"),
+                    _("Dry grains to 14% moisture content immediately after harvest")
+                ],
+                "irrigation": _("Field should be dry during harvest"),
+                "fertilizer": _("No fertilizer application")
+            }
+        ])
+        
+        # Summary
+        plan["summary"] = {
+            "total_water_requirement": _("1200-1500 mm throughout the season"),
+            "total_fertilizer": _("120 kg N + 30 kg P2O5 + 30-45 kg K2O per hectare"),
+            "expected_yield": _("4.5-5.5 tons per hectare"),
+            "critical_stages": [
+                _("Transplanting (Days 25-30)"),
+                _("Panicle initiation (Days 65-75)"),
+                _("Flowering (Days 85-95)")
+            ],
+            "key_practices": [
+                _("Maintain continuous flooding during reproductive phase"),
+                _("Apply fertilizers in 3 splits for better efficiency"),
+                _("Monitor pest and disease regularly"),
+                _("Ensure proper drainage before harvest")
+            ]
+        }
+        
+        return plan
+    
+    # NEW: Check if this is Rice in Odisha during Kharif season
+    elif (crop.lower() == "rice" and 
+          state.lower() == "odisha" and 
+          season.lower() == "kharif"):
+        
+        plan = {
+            "crop": "Rice",
+            "state": "Odisha", 
+            "season": "Kharif",
+            "duration": "130 days",
+            "variety_recommended": "Lalat, Pooja, or Improved Lalat (cyclone resistant)",
+            "detailed_plan": []
+        }
+        
+        # Pre-monsoon preparation (Days -20 to 0)
+        plan["detailed_plan"].extend([
+            {
+                "phase": _("Pre-Monsoon Preparation"),
+                "days": _("20 days before monsoon (May 15 - June 5)"),
+                "activities": [
+                    _("Summer ploughing 2-3 times for pest control and soil health"),
+                    _("Apply 3-4 tons of well-decomposed FYM or compost per hectare"),
+                    _("Construct/repair field bunds for water conservation"),
+                    _("Prepare community nursery beds on higher ground"),
+                    _("Seed treatment with Pseudomonas @ 10g/kg for disease resistance"),
+                    _("Check drainage channels for cyclone preparedness")
+                ],
+                "irrigation": _("Depends on pre-monsoon showers, light irrigation if needed"),
+                "fertilizer": _("Basal application: 40 kg N + 40 kg P2O5 + 40 kg K2O per hectare (higher K for cyclone resistance)")
+            }
+        ])
+        
+        # Monsoon nursery phase (Days 1-30)
+        plan["detailed_plan"].extend([
+            {
+                "phase": _("Monsoon Nursery Phase"),
+                "days": _("Days 1-30 (June 5 - July 5)"),
+                "activities": [
+                    _("Sow seeds @ 60-80 kg/hectare in nursery (higher density for cyclone backup)"),
+                    _("Maintain 2-5 cm water level depending on rainfall"),
+                    _("Apply neem cake @ 250 kg/hectare for pest management"),
+                    _("Monitor weather forecast for cyclone warnings"),
+                    _("Apply urea @ 15 kg/400 sq.m nursery on day 15")
+                ],
+                "irrigation": _("Rainwater dependent - supplement only if rainfall <50mm/week"),
+                "fertilizer": _("Day 15: Urea 15 kg per 400 sq.m nursery area\nDay 25: MOP 5 kg per 400 sq.m for strengthening")
+            }
+        ])
+        
+        # Transplanting phase (Days 30-40)
+        plan["detailed_plan"].extend([
+            {
+                "phase": _("Transplanting (Peak Monsoon)"),
+                "days": _("Days 30-40 (July 5 - July 15)"),
+                "activities": [
+                    _("Transplant 30-35 day old robust seedlings"),
+                    _("Wider spacing: 25cm x 20cm for better wind resistance"),
+                    _("Plant 3-4 seedlings per hill for cyclone tolerance"),
+                    _("Complete transplanting before peak monsoon intensity"),
+                    _("Apply Butachlor @ 1.25 kg/hectare for weed control on day 3")
+                ],
+                "irrigation": _("Maintain 5-8 cm standing water, monitor for excess water drainage"),
+                "fertilizer": _("No fertilizer during transplanting - focus on establishment")
+            }
+        ])
+        
+        # Vegetative growth phase (Days 40-80)
+        plan["detailed_plan"].extend([
+            {
+                "phase": _("Vegetative Growth (Monsoon Peak)"),
+                "days": _("Days 40-80 (July 15 - August 25)"),
+                "activities": [
+                    _("First top dressing and weeding on day 45"),
+                    _("Second weeding and earthing up on day 60 for wind resistance"),
+                    _("Monitor for blast and sheath blight (high humidity diseases)"),
+                    _("Apply Triazophos for stem borer control if needed"),
+                    _("Check field drainage after heavy rainfall events"),
+                    _("Foliar spray of potash @ 1% for strength on day 70")
+                ],
+                "irrigation": _("Days 40-60: 8-12 cm water depth (monsoon peak)\nDays 61-80: 5-8 cm water depth\nEnsure proper drainage during heavy rains"),
+                "fertilizer": _("Day 45: Apply 40 kg N (87 kg Urea) per hectare\nDay 65: Apply remaining 40 kg N (87 kg Urea) per hectare\nDay 70: Foliar KCl spray 1%")
+            }
+        ])
+        
+        # Reproductive phase (Days 80-110)
+        plan["detailed_plan"].extend([
+            {
+                "phase": _("Reproductive Phase (Late Monsoon - Post Monsoon)"),
+                "days": _("Days 80-110 (August 25 - September 25)"),
+                "activities": [
+                    _("Critical period - monitor weather for cyclones"),
+                    _("Maintain continuous flooding for panicle development"),
+                    _("Apply additional potash if cyclone warning issued"),
+                    _("Monitor for neck blast and false smut"),
+                    _("Install bird scarers as grains start filling"),
+                    _("Prepare drainage for post-monsoon excess water")
+                ],
+                "irrigation": _("Days 80-95: 10-15 cm continuous flooding (critical stage)\nDays 96-110: 8-10 cm water depth\nPrepare for cyclone drainage if needed"),
+                "fertilizer": _("Day 85: Apply 20 kg K2O (33 kg MOP) per hectare for grain filling\nEmergency K spray if cyclone expected")
+            }
+        ])
+        
+        # Grain filling phase (Days 110-125)
+        plan["detailed_plan"].extend([
+            {
+                "phase": _("Grain Filling (Post-Monsoon)"),
+                "days": _("Days 110-125 (September 25 - October 10)"),
+                "activities": [
+                    _("Reduce water levels gradually"),
+                    _("Monitor for rice bugs and apply Malathion if needed"),
+                    _("Watch for cyclone warnings and harvest early if needed"),
+                    _("Check grain moisture content twice weekly"),
+                    _("Prepare harvesting equipment and labor"),
+                    _("Apply Propiconazole for grain diseases if humidity is high")
+                ],
+                "irrigation": _("Days 110-120: 3-5 cm water depth\nDays 121-125: 1-2 cm water depth\nStop irrigation 5-7 days before harvest"),
+                "fertilizer": _("No fertilizer application - focus on crop protection")
+            }
+        ])
+        
+        # Harvest phase (Days 125-130)
+        plan["detailed_plan"].extend([
+            {
+                "phase": _("Harvest (Pre-Winter)"),
+                "days": _("Days 125-130 (October 10 - October 15)"),
+                "activities": [
+                    _("Harvest when 80-85% grains are golden (earlier than usual for cyclone safety)"),
+                    _("Target moisture content: 18-20% for Odisha conditions"),
+                    _("Use combine harvester if fields are accessible"),
+                    _("Immediate drying to 14% moisture using solar dryers"),
+                    _("Store in moisture-proof containers for cyclone season"),
+                    _("Keep some paddy unhusked for better storage")
+                ],
+                "irrigation": _("Field should be dry but not cracked - maintain some moisture for machinery"),
+                "fertilizer": _("No fertilizer application")
+            }
+        ])
+        
+        # Summary for Odisha conditions
+        plan["summary"] = {
+            "total_water_requirement": _("1500-1800 mm (monsoon dependent, cyclone considerations)"),
+            "total_fertilizer": _("120 kg N + 40 kg P2O5 + 60 kg K2O per hectare (higher K for cyclone resistance)"),
+            "expected_yield": _("3.5-4.5 tons per hectare (cyclone-resistant varieties)"),
+            "critical_stages": [
+                _("Nursery protection (June monsoon)"),
+                _("Transplanting timing (before peak monsoon)"),
+                _("Panicle initiation (cyclone season - Aug-Sep)"),
+                _("Early harvest (before October cyclones)")
+            ],
+            "key_practices": [
+                _("Cyclone-resistant variety selection essential"),
+                _("Higher potassium application for wind resistance"),
+                _("Wider spacing and stronger seedlings"),
+                _("Weather monitoring and early harvest planning"),
+                _("Proper drainage system for excess water management"),
+                _("Community nursery approach for risk reduction")
+            ],
+            "odisha_specific": [
+                _("🌀 Cyclone preparedness: Monitor IMD warnings regularly"),
+                _("🌊 Drainage: Essential for managing monsoon excess water"),
+                _("🌾 Varieties: Use Lalat/Pooja for local adaptation"),
+                _("🏪 Storage: Cyclone-safe storage facilities needed"),
+                _("👥 Community approach: Share resources for risk management")
+            ]
+        }
+        
+        return plan
+    
+    else:
+        # Return general recommendations for other combinations
+        return None
+
+def display_detailed_crop_plan(crop, state, season, area, pH, rainfall, temperature):
+    """Display detailed crop management plan"""
+    plan = get_detailed_crop_plan(crop, state, season, area, pH, rainfall, temperature)
+    
+    if plan:
+        st.success(_("🌾 Detailed Crop Management Plan Available!"))
+        
+        # Display header info
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.metric(_("Crop"), _(plan["crop"]))
+        with col2:
+            st.metric(_("State"), _(plan["state"]))
+        with col3:
+            st.metric(_("Season"), _(plan["season"]))
+        with col4:
+            st.metric(_("Duration"), _(plan["duration"]))
+        
+        st.info(_(f"**Recommended Variety:** {plan['variety_recommended']}"))
+        
+        # Special Odisha-specific alerts
+        if plan["state"].lower() == "odisha":
+            st.warning(_("⚠️ **Cyclone Zone Alert**: This plan includes cyclone preparedness measures specific to Odisha's coastal conditions."))
+            
+            with st.expander(_("🌀 Odisha-Specific Considerations"), expanded=True):
+                for consideration in plan["summary"]["odisha_specific"]:
+                    st.markdown(f"• {consideration}")
+        
+        # Display detailed timeline
+        st.markdown(_("## 📅 Detailed Timeline and Activities"))
+        
+        for phase in plan["detailed_plan"]:
+            with st.expander(f"📋 {phase['phase']} - {phase['days']}", expanded=False):
+                
+                col1, col2 = st.columns([2, 1])
+                
+                with col1:
+                    st.markdown(_("**Activities:**"))
+                    for activity in phase["activities"]:
+                        st.markdown(f"• {activity}")
+                
+                with col2:
+                    st.markdown(_("**💧 Irrigation:**"))
+                    st.info(phase["irrigation"])
+                    
+                    st.markdown(_("**🌱 Fertilizer:**"))
+                    st.success(phase["fertilizer"])
+        
+        # Display summary
+        st.markdown(_("## 📊 Summary & Key Information"))
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown(_("**💧 Total Water Requirement:**"))
+            st.info(plan["summary"]["total_water_requirement"])
+            
+            st.markdown(_("**🌱 Total Fertilizer Requirement:**"))
+            st.success(plan["summary"]["total_fertilizer"])
+
+            st.markdown(_("**✅ Key Practices:**"))
+            for practice in plan["summary"]["key_practices"]:
+                st.markdown(f"• {practice}")
+        
+        
+        with col2:
+            st.markdown(_("**⚠️ Critical Stages:**"))
+            for stage in plan["summary"]["critical_stages"]:
+                st.warning(stage)
+            
+
+        return True
+    
+    return False
+
 # Loading all the models
 working_dir = os.path.dirname(os.path.abspath(__file__))
 crop_recom_model = pickle.load(open(f'{working_dir}/RF_Crop.sav', 'rb'))
@@ -476,7 +873,8 @@ Leverage machine learning for accurate crop yield predictions to enhance product
     area = st.number_input(_("Area (hectares)"), min_value=0.0, value=0.0)
     production = st.number_input(_("Production (tons)"), min_value=0.0, value=0.0)
 
-    if st.button(_("Predict Yield")):
+    # Single button that handles both prediction and detailed plan
+    if st.button(_("Predict Yield"), type="primary"):
         if state and crop and season and pH and rainfall and temperature and area and production:
             state_lower = state.lower()
             crop_lower = crop.lower()
@@ -495,11 +893,20 @@ Leverage machine learning for accurate crop yield predictions to enhance product
             else:
                 predicted_yield = crop_yield_model.predict(input_features)
                 st.success(_(f'The predicted yield for the selected inputs is: {predicted_yield[0]:.2f} tons/hectare'))
+                
                 # Show tailored recommendations to improve yield
                 recs = get_yield_recommendations(crop, area, season, pH, rainfall, temperature, production, predicted_yield[0])
                 st.markdown(_("#### Recommendations to Improve Yield"))
                 for r in recs:
                     st.info(r)
+                
+                # INTEGRATED: Check if detailed plan is available and display it
+                detailed_plan = get_detailed_crop_plan(crop, state, season, area, pH, rainfall, temperature)
+                if detailed_plan:
+                    st.markdown("---")
+                    st.markdown(_("# 🌾 **BONUS: Comprehensive Crop Management Plan**"))
+                    st.markdown(_("Since you selected a special combination, here's your detailed farming plan:"))
+                    display_detailed_crop_plan(crop, state, season, area, pH, rainfall, temperature)
         else:
             st.error(_("Please enter all required values"))
 
